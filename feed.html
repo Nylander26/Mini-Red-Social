@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed</title>
+    <link rel="stylesheet" href="gallery-grid.css">
+</head>
+<body>
+    <form action="feed.php" method="POST" enctype="multipart/form-data">
+        Subir Foto: <input name="archivo" id="archivo" type="file"/>
+        <input type="submit" name="subir" value="Enviar" id="enviar"/>
+    </form>    
+    <div>
+        <div class="ful-img" id="fulImgBox">
+            <img src="images\1.jpg" id="fulImg" alt="">
+            <span onclick="closeImg()">X</span>
+        </div>
+
+        <h1><span>Galeria</span></h1>
+        <div class="img-gallery">
+            <img src="images\1.jpg" onclick="openFulImg(this.src)">
+            <img src="images\2.jpg" onclick="openFulImg(this.src)">
+            <img src="images\3.jpg" onclick="openFulImg(this.src)">
+            <img src="images\4.jpg" onclick="openFulImg(this.src)">
+            <img src="images\5.jpg" onclick="openFulImg(this.src)">
+            <img src="images\6.jpg" onclick="openFulImg(this.src)">
+            <img src="images\7.jpg" onclick="openFulImg(this.src)">
+            <img src="images\8.jpg" onclick="openFulImg(this.src)">
+        </div>
+    </div>
+    <!--<?php
+    //Si se quiere subir una imagen
+    if (isset($_POST['subir'])) {
+    //Recogemos el archivo enviado por el formulario
+    $archivo = $_FILES['archivo']['name'];
+    //Si el archivo contiene algo y es diferente de vacio
+    if (isset($archivo) && $archivo != "") {
+        //Obtenemos algunos datos necesarios sobre el archivo
+        $tipo = $_FILES['archivo']['type'];
+        $tamano = $_FILES['archivo']['size'];
+        $temp = $_FILES['archivo']['tmp_name'];
+        //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
+        if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
+            echo '<div><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/>
+            - Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</b></div>';
+        }
+        else {
+            //Si la imagen es correcta en tamaño y tipo
+            //Se intenta subir al servidor
+            if (move_uploaded_file($temp, 'C:\xampp\htdocs\Script PHP\Mini Red Social\images/'.$archivo)) {
+                //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
+                chmod('C:\xampp\htdocs\Script PHP\Mini Red Social\images/'.$archivo, 0777);
+                //Mostramos el mensaje de que se ha subido co éxito
+                echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
+                //Mostramos la imagen subida
+                //echo '<p><img src="C:\xampp\htdocs\Script PHP\Mini Red Social\images/'.$archivo.'"></p>';
+            }
+            else {
+            //Si no se ha podido subir la imagen, mostramos un mensaje de error
+            echo '<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>';
+            }
+        }
+    }
+    }
+    ?>-->
+    <script src="galeria.js"></script>
+</body>
+</html>
